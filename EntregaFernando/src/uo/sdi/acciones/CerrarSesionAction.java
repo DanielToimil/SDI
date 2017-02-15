@@ -13,7 +13,7 @@ public class CerrarSesionAction implements Accion {
 		String resultado="EXITO";
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return resultado;
+		return resultado;//comentario de prueba para ver si se actualiza
 	}
 	
 	@Override
