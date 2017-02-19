@@ -9,12 +9,22 @@ import uo.sdi.dto.types.UserStatus;
  */
 public class User {
 	private Long id;
-
+	
 	private String login;
 	private String email;
 	private String password;
 	private Boolean isAdmin = false;
 	private UserStatus status = UserStatus.ENABLED;
+	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public User(String login, String email, String contraseña) {
+		this.login= login;
+		this.email = email;
+		this.password = contraseña;
+	}
 	
 	public User setIsAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
