@@ -14,7 +14,7 @@
 	<jsp:useBean id="user" class="uo.sdi.dto.User" scope="session" />
 	<table>
 		<tr>
-			<td>Id:</td><td id="id"><jsp:getProperty property="id" name="user" /></td>
+			<td>Id:</td><td id="id" ><jsp:getProperty property="id" name="user" /></td>
 		</tr>
 		<tr>
 			<td>Email:</td>
@@ -53,7 +53,7 @@
 	</form>
 	<table>
 		<tr>
-			<td>Es administrador:</td><td id="isAdmin"><jsp:getProperty property="isAdmin" name="user" /></td>
+			<td>Es administrador:</td><td name="isAdmin"><jsp:getProperty property="isAdmin" name="user" /></td>
 		</tr>
 		<tr>
 			<td>Login:</td><td id="login"><jsp:getProperty property="login" name="user" /></td>
@@ -64,6 +64,7 @@
 	</table>
 	<br/>	
 	<a id="cerrarSesion_link_id" href="cerrarSesion">Cerrar sesión</a>
+	<a id="listarCategorias_link_id" href="listarCategorias">Lista de categorias</a>
 	
 	<%@ include file="pieDePagina.jsp" %>
 </body>
