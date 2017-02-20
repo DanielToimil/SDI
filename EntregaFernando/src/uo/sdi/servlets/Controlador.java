@@ -121,6 +121,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		Map<String,Accion> mapaPublico=new HashMap<String,Accion>();
 		mapaPublico.put("validarse", new ValidarseAction());
 		mapaPublico.put("registrarse", new RegistrarseAction());
+		mapaPublico.put("cerrarSesion", new ValidarseAction());
 		mapaDeAcciones.put("ANONIMO", mapaPublico);
 		
 		Map<String,Accion> mapaRegistrado=new HashMap<String,Accion>();
@@ -153,6 +154,9 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resultadoYJSP.put("EXITO","/login.jsp");
 		resultadoYJSP.put("FRACASO", "/login.jsp");
 		opcionResultadoYJSP.put("registrarse", resultadoYJSP);
+		resultadoYJSP = new HashMap<String, String>();
+		resultadoYJSP.put("EXITO","/login.jsp");
+		opcionResultadoYJSP.put("cerrarSesion", resultadoYJSP);
 		
 		
 		mapaDeNavegacion.put("ANONIMO",opcionResultadoYJSP);
@@ -168,6 +172,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resultadoYJSP.put("EXITO","/principalUsuario.jsp");
 		resultadoYJSP.put("FRACASO","/principalUsuario.jsp");
 		opcionResultadoYJSP.put("modificarDatos", resultadoYJSP);
+		resultadoYJSP=new HashMap<String, String>();
 		resultadoYJSP.put("EXITO", "/login.jsp");
 		opcionResultadoYJSP.put("cerrarSesion", resultadoYJSP);
 		resultadoYJSP=new HashMap<String, String>();
@@ -184,11 +189,13 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		opcionResultadoYJSP=new HashMap<String, Map<String, String>>();
 		resultadoYJSP=new HashMap<String, String>();
 		
-		resultadoYJSP.put("EXITO", "/principalUsuario.jsp");
+		resultadoYJSP.put("EXITO", "/principalAdmin.jsp");
 		opcionResultadoYJSP.put("validarse", resultadoYJSP);
-		resultadoYJSP.put("EXITO", "/principalUsuario.jsp");
-		resultadoYJSP.put("FRACASO", "/principalUsuario.jsp");
+		resultadoYJSP=new HashMap<String, String>();
+		resultadoYJSP.put("EXITO", "/principalAdmin.jsp");
+		resultadoYJSP.put("FRACASO", "/principalAdmin.jsp");
 		opcionResultadoYJSP.put("modificarDatos", resultadoYJSP);
+		resultadoYJSP=new HashMap<String, String>();
 		resultadoYJSP.put("EXITO", "/login.jsp");
 		opcionResultadoYJSP.put("cerrarSesion", resultadoYJSP);
 		resultadoYJSP=new HashMap<String, String>();
