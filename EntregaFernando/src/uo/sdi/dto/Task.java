@@ -16,6 +16,20 @@ public class Task {
 	private Long categoryId;
 	private Long userId;
 	
+	public Task() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Task(String nombreTarea) {
+		this.title=nombreTarea;
+		this.comments= null;
+		this.created=DateUtil.today();
+		this.planned = null;
+		this.finished = null;
+		this.categoryId = (long) 2;//modificar
+		this.userId = (long) 1;//modificar
+	}
+	
 	public Long getId() {
 		return id;
 	}
