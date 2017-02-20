@@ -26,6 +26,9 @@ public class ValidarseAction implements Accion {
 			try {
 				userByLogin = userService.findLoggableUser(nombreUsuario, 
 						contraseña);
+				/*if(userByLogin.getIsAdmin() == true){
+					resultado = "ADMIN";
+				}*/
 			} catch (BusinessException b) {
 				session.invalidate();
 				Log.debug("Algo ha ocurrido intentando iniciar sesión [%s]: %s", 

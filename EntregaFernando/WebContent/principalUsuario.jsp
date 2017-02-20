@@ -65,7 +65,6 @@
 	<br/>	
 	<a id="cerrarSesion_link_id" href="cerrarSesion">Cerrar sesión</a>
 	<a id="listarCategorias_link_id" href="listarCategorias">Lista de categorias</a>
-	
 	<%@ include file="pieDePagina.jsp" %>
 </body>
 </html>
