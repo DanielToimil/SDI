@@ -17,6 +17,7 @@
 				<th>IsAdmin</th>
 				<th>Status</th>
 				<th>Cambiar Estado</th>
+				<th>Eliminar usuario</th>
 			</tr>
 		<c:forEach var="entry" items="${listaUsuarios}" varStatus="i">
 			<tr id="item_${i.index}">
@@ -25,10 +26,11 @@
 				<td>${entry.isAdmin}</td>
 				<td>${entry.status}</td>
 				<td><input type="checkbox" name="cambiarEstado${entry.login}"/></td>
+				<td><input type="checkbox" name="eliminar${entry.login}"/></td>
 			</tr>
 		</c:forEach>
 	</table>
-	<input type="submit" value="Cambiar Estado">
+	<input type="submit" onclick="return confirm('¿Seguro que desea modificar los datos? Si eliminas un usuario no se podra deshacer')" value="Modificar usuario">
 	</form>
 	<%@ include file="pieDePagina.jsp" %>
 </body>

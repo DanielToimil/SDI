@@ -31,12 +31,18 @@ public class CambiarEstadoAction implements Accion {
 		try {
 			AdminService as = Services.getAdminService();
 			for(int i = 0; i<listaUsuarios.size(); i++){
-				Object checkbox = request.getParameter("cambiarEstado"+listaUsuarios.get(i).getLogin());
-				if(checkbox != null){
-					if(listaUsuarios.get(i).getStatus() == UserStatus.ENABLED)
-						as.disableUser(listaUsuarios.get(i).getId());
-					else
-						as.enableUser(listaUsuarios.get(i).getId());
+				Object checkboxEstado = request.getParameter("cambiarEstado"+listaUsuarios.get(i).getLogin());
+				Object checkboxEliminar = request.getParameter("eliminar"+listaUsuarios.get(i).getLogin());
+				if(checkboxEliminar != null){
+					as.deepDeleteUser(listaUsuarios.get(i).getId());
+				}
+				else{
+					if(checkboxEstado != null){
+						if(listaUsuarios.get(i).getStatus() == UserStatus.ENABLED)
+							as.disableUser(listaUsuarios.get(i).getId());
+						else
+							as.enableUser(listaUsuarios.get(i).getId());
+					}
 				}
 			}
 			new ListarUsuariosAction().execute(request, response);
