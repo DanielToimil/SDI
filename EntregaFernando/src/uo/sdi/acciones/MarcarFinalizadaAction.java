@@ -1,5 +1,7 @@
 package uo.sdi.acciones;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +34,9 @@ public class MarcarFinalizadaAction implements Accion {
 		List<Task> listaTareasInbox; //=(List<Task>) session.getAttribute("listaTareasInbox");
 		List<Task> listaTareasHoy; //=(List<Task>) session.getAttribute("listaTareasHoy");
 		
+		String tituloTareaNueva = request.getParameter("nombreTarea");
+		String comentarioTareaNueva = request.getParameter("comentarioTarea");
+		
 		try {
 			TaskService ts = Services.getTaskService();
 			
@@ -40,16 +45,28 @@ public class MarcarFinalizadaAction implements Accion {
 			
 			for(int i = 0; i<listaTareasInbox.size(); i++){
 				Object checkboxFinalizada = request.getParameter("marcarFinalizadaInbox"+listaTareasInbox.get(i).getId());
+				Object checkboxEditar = request.getParameter("editarTareaInbox"+listaTareasInbox.get(i).getId());
 				if(checkboxFinalizada != null){
 					ts.markTaskAsFinished(listaTareasInbox.get(i).getId());
 				}
+				if(checkboxEditar!=null){
+					listaTareasInbox.get(i).setTitle(tituloTareaNueva);
+					listaTareasInbox.get(i).setComments(comentarioTareaNueva);
+				}
+
 			}
 			
 			for(int i = 0; i<listaTareasHoy.size(); i++){
 				Object checkboxFinalizada = request.getParameter("marcarFinalizadaHoy"+listaTareasHoy.get(i).getId());
+				Object checkboxEditar = request.getParameter("editarTareaHoy"+listaTareasHoy.get(i).getId());
 				if(checkboxFinalizada != null){
 					ts.markTaskAsFinished(listaTareasHoy.get(i).getId());
 				}
+				if(checkboxEditar!=null){
+					listaTareasHoy.get(i).setTitle(tituloTareaNueva);
+					listaTareasHoy.get(i).setComments(comentarioTareaNueva);
+				}
+
 			}
 			
 			

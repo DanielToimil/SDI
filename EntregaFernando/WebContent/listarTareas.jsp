@@ -9,6 +9,7 @@
 </head>
 <body>
 	<form action="marcarFinalizada" method="POST">
+	<center><h1>Lista Tareas Inbox</h1></center>
 	<table border="1" align="center">
 			<tr>
 				<th>ID</th>
@@ -34,12 +35,13 @@
 		        </c:choose>
 				<td>${entry.categoryId}</td>
 				<td><input type="checkbox" name="marcarFinalizadaInbox${entry.id}"/></td>
-				<td><input type="checkbox" name="editarTarea${entry.id}"/></td>
+				<td><input type="checkbox" name="editarTareaInbox${entry.id}"/></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<br>
 	<br>
+	<center><h1>Lista Tareas Hoy</h1></center>
 	<table border="1" align="center">
 			<tr>
 				<th>ID</th>
@@ -65,12 +67,28 @@
 		        </c:choose>
 				<td>${entry.categoryId}</td>
 				<td><input type="checkbox" name="marcarFinalizadaHoy${entry.id}"/></td>
-				<td><input type="checkbox" name="editarTarea${entry.id}"/></td>
+				<td><input type="checkbox" name="editarTareaHoy${entry.id}"/></td>
 			</tr>
 		</c:forEach>
 	</table>
+	<center><h1>Editar Tarea</h1></center>
+	 	<hr><br>
+	 	<table align="center">
+	    	<tr> 
+	    		<td align="right">Nombre para la tarea</td>
+		    	<td><input type="text" name="nombreTarea" align="left" size="15"></td>
+	      	</tr>
+	      	<tr> 
+	    		<td align="right">Comentario de la tarea</td>
+		    	<td><input type="text" name="comentarioTarea" align="left" size="15"></td>
+	      	</tr>
+	      	<tr> 
+	    		<td align="right">Fecha planeada</td>
+		    	<td><input type="text" name="fechaTarea" align="left" size="15"></td>
+	      	</tr>
+	      </table>
 	<br>
-	<input type="submit" value="Marcar Finalizada">
+	<center><input type="submit" value="Finalizar Tarea/Editar"></center>
 	</form>
 	<a id="añadirTarea_link_id" href="añadirTarea">Añadir Tarea</a>
 	<%@ include file="pieDePagina.jsp" %>
