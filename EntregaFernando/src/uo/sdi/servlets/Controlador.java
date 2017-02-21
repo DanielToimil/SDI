@@ -130,6 +130,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		mapaRegistrado.put("listarTareas", new ListarTareasAction());
 		mapaRegistrado.put("añadirTarea", new AñadirTareaAction());
 		mapaRegistrado.put("cerrarSesion", new CerrarSesionAction());
+		mapaRegistrado.put("marcarFinalizada", new MarcarFinalizadaAction());
 		mapaDeAcciones.put("USUARIO", mapaRegistrado);
 		
 		Map<String,Accion> mapaAdministrador = new HashMap<String,Accion>();
@@ -190,6 +191,10 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resultadoYJSP.put("EXITO","/añadirTarea.jsp");
 		resultadoYJSP.put("FRACASO","/principalUsuario.jsp");
 		opcionResultadoYJSP.put("añadirTarea", resultadoYJSP);
+		resultadoYJSP=new HashMap<String, String>();
+		resultadoYJSP.put("EXITO","/listarTareas.jsp");
+		resultadoYJSP.put("FRACASO","/principalUsuario.jsp");
+		opcionResultadoYJSP.put("marcarFinalizada", resultadoYJSP);
 
 		
 		mapaDeNavegacion.put("USUARIO",opcionResultadoYJSP);
