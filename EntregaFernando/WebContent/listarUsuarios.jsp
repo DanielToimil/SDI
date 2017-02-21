@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form action="cambiarEstado" method="POST">
 	<table border="1" align="center">
 			<tr>
 				<th>Login</th>
@@ -23,12 +24,12 @@
 				<td>${entry.email}</td>
 				<td>${entry.isAdmin}</td>
 				<td>${entry.status}</td>
-				<!--Me queda aqui darle evento al boton para poder llamar a los metodos de Admin Service 
-				(Enable/DisableUserCommand)-->
-				<td><input type="button" name="cambiar estado"/></td>
+				<td><input type="checkbox" name="cambiarEstado${entry.login}"/></td>
 			</tr>
 		</c:forEach>
 	</table>
+	<input type="submit" value="Cambiar Estado">
+	</form>
 	<%@ include file="pieDePagina.jsp" %>
 </body>
 </html>

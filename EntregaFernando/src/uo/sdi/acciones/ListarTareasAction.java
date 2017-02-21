@@ -31,12 +31,12 @@ public class ListarTareasAction implements Accion {
 		try {
 			TaskService taskService = Services.getTaskService();
 			listaTareasInbox= taskService.findInboxTasksByUserId(user.getId());
-			request.setAttribute("listaTareas", listaTareasInbox);
+			request.setAttribute("listaTareasInbox", listaTareasInbox);
 			Log.debug("Obtenida lista de tareas Inbox conteniendo [%d] tareas", 
 					listaTareasInbox.size());
 			
 			listaTareasHoy= taskService.findTodayTasksByUserId(user.getId());
-			request.setAttribute("listaTareas", listaTareasHoy);
+			request.setAttribute("listaTareasHoy", listaTareasHoy);
 			Log.debug("Obtenida lista de tareas Hoy conteniendo [%d] tareas", 
 					listaTareasHoy.size());
 		}
