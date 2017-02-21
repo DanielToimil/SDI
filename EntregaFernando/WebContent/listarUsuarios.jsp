@@ -19,7 +19,7 @@
 				<th>Cambiar Estado</th>
 				<th>Eliminar usuario</th>
 			</tr>
-		<c:forEach var="entry" items="${listaUsuarios}" varStatus="i">
+		<c:forEach var="entry" items="${listaUsuarios}" varStatus="i" >
 			<tr id="item_${i.index}">
 				<td>${entry.login}</td>
 				<td>${entry.email}</td>

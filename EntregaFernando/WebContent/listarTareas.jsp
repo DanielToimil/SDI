@@ -10,14 +10,18 @@
 	<table border="1" align="center">
 			<tr>
 				<th>ID</th>
+				<th>Nombre</th>
 				<th>Comentario</th>
 				<th>Planeado</th>
+				<th>Categoria</th>
 			</tr>
 		<c:forEach var="entry" items="${listaTareasInbox}" varStatus="i">
 			<tr id="item_${i.index}">
 				<td>${entry.id}</td>
+				<td>${entry.title}</td>
 				<td>${entry.comments}</td>
 				<td>${entry.planned}</td>
+				<td>${entry.categoryId}</td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -26,14 +30,18 @@
 	<table border="1" align="center">
 			<tr>
 				<th>ID</th>
+				<th>Nombre</th>
 				<th>Comentario</th>
 				<th>Planeado</th>
+				<th>Categoria</th>
 			</tr>
 		<c:forEach var="entry" items="${listaTareasHoy}" varStatus="i">
 			<tr id="item_${i.index}">
 				<td>${entry.id}</td>
+				<td>${entry.title}</td>
 				<td>${entry.comments}</td>
 				<td>${entry.planned}</td>
+				<td>${entry.categoryId}</td>
 			</tr>
 		</c:forEach>
 	</table>
