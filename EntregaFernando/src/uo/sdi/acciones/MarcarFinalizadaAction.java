@@ -1,5 +1,6 @@
 package uo.sdi.acciones;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -31,11 +32,15 @@ public class MarcarFinalizadaAction implements Accion {
 		HttpSession session=request.getSession();
 		User user=((User)session.getAttribute("user"));
 		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		
 		List<Task> listaTareasInbox; //=(List<Task>) session.getAttribute("listaTareasInbox");
 		List<Task> listaTareasHoy; //=(List<Task>) session.getAttribute("listaTareasHoy");
 		
 		String tituloTareaNueva = request.getParameter("nombreTarea");
 		String comentarioTareaNueva = request.getParameter("comentarioTarea");
+		
+		Date fechaPlaneadaTarea = null;
 		
 		try {
 			TaskService ts = Services.getTaskService();
@@ -52,6 +57,8 @@ public class MarcarFinalizadaAction implements Accion {
 				if(checkboxEditar!=null){
 					listaTareasInbox.get(i).setTitle(tituloTareaNueva);
 					listaTareasInbox.get(i).setComments(comentarioTareaNueva);
+					fechaPlaneadaTarea=formatter.parse(request.getParameter("fechaTarea"));
+					listaTareasInbox.get(i).setPlanned(fechaPlaneadaTarea);
 					ts.updateTask(listaTareasInbox.get(i));
 				}
 
@@ -66,6 +73,8 @@ public class MarcarFinalizadaAction implements Accion {
 				if(checkboxEditar!=null){
 					listaTareasHoy.get(i).setTitle(tituloTareaNueva);
 					listaTareasHoy.get(i).setComments(comentarioTareaNueva);
+					fechaPlaneadaTarea=formatter.parse(request.getParameter("fechaTarea"));
+					listaTareasHoy.get(i).setPlanned(fechaPlaneadaTarea);
 					ts.updateTask(listaTareasHoy.get(i));
 				}
 
@@ -79,6 +88,9 @@ public class MarcarFinalizadaAction implements Accion {
 		catch (BusinessException b) {
 			Log.debug("Algo ha ocurrido marcando la tarea como finalizada");
 			resultado="FRACASO";
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return resultado;
 	}

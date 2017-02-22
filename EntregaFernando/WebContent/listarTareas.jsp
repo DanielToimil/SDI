@@ -83,7 +83,7 @@
 		    	<td><input type="text" name="comentarioTarea" align="left" size="15"></td>
 	      	</tr>
 	      	<tr> 
-	    		<td align="right">Fecha planeada</td>
+	    		<td align="right">Fecha planeada(formato: dd-MM-yyyy)</td>
 		    	<td><input type="text" name="fechaTarea" align="left" size="15"></td>
 	      	</tr>
 	      </table>

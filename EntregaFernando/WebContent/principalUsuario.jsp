@@ -65,6 +65,7 @@
 	<br/>	
 	<a id="cerrarSesion_link_id" href="cerrarSesion">Cerrar sesión</a>
 	<a id="listarCategorias_link_id" href="listarCategorias">Lista de categorias</a>
+	<a id="listarTareasCategorias_link_id" href="listarTareasPorCategoria">Lista de tareas por categoria</a>
 	<a id="listarTareas_link_id" href="listarTareas">Lista de tareas</a>
 	<%@ include file="pieDePagina.jsp" %>
 </body>
