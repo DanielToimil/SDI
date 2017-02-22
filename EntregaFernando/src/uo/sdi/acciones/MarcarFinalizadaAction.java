@@ -52,6 +52,7 @@ public class MarcarFinalizadaAction implements Accion {
 				if(checkboxEditar!=null){
 					listaTareasInbox.get(i).setTitle(tituloTareaNueva);
 					listaTareasInbox.get(i).setComments(comentarioTareaNueva);
+					ts.updateTask(listaTareasInbox.get(i));
 				}
 
 			}
@@ -65,6 +66,7 @@ public class MarcarFinalizadaAction implements Accion {
 				if(checkboxEditar!=null){
 					listaTareasHoy.get(i).setTitle(tituloTareaNueva);
 					listaTareasHoy.get(i).setComments(comentarioTareaNueva);
+					ts.updateTask(listaTareasHoy.get(i));
 				}
 
 			}
