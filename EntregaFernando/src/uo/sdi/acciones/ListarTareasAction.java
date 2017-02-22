@@ -27,6 +27,7 @@ public class ListarTareasAction implements Accion {
 		
 		List<uo.sdi.dto.Task> listaTareasInbox;
 		List<uo.sdi.dto.Task> listaTareasHoy;
+		List<uo.sdi.dto.Task> listaTareasSemana;
 		
 		try {
 			TaskService taskService = Services.getTaskService();
@@ -39,6 +40,11 @@ public class ListarTareasAction implements Accion {
 			request.setAttribute("listaTareasHoy", listaTareasHoy);
 			Log.debug("Obtenida lista de tareas Hoy conteniendo [%d] tareas", 
 					listaTareasHoy.size());
+			
+			listaTareasSemana= taskService.findWeekTasksByUserId(user.getId());
+			request.setAttribute("listaTareasSemana", listaTareasSemana);
+			Log.debug("Obtenida lista de tareas Semana conteniendo [%d] tareas", 
+					listaTareasSemana.size());
 		}
 		catch (BusinessException b) {
 			Log.debug("Algo ha ocurrido obteniendo lista de tareas: %s",

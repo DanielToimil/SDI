@@ -34,11 +34,13 @@ public class MarcarFinalizadaAction implements Accion {
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		
-		List<Task> listaTareasInbox; //=(List<Task>) session.getAttribute("listaTareasInbox");
-		List<Task> listaTareasHoy; //=(List<Task>) session.getAttribute("listaTareasHoy");
+		List<Task> listaTareasInbox;
+		List<Task> listaTareasHoy;
+		List<Task> listaTareasSemana;
 		
 		String tituloTareaNueva = request.getParameter("nombreTarea");
 		String comentarioTareaNueva = request.getParameter("comentarioTarea");
+		String categoriaTareaNueva = request.getParameter("categoriaTarea");
 		
 		Date fechaPlaneadaTarea = null;
 		
@@ -47,6 +49,7 @@ public class MarcarFinalizadaAction implements Accion {
 			
 			listaTareasInbox= ts.findInboxTasksByUserId(user.getId());
 			listaTareasHoy= ts.findTodayTasksByUserId(user.getId());
+			listaTareasSemana = ts.findWeekTasksByUserId(user.getId());
 			
 			for(int i = 0; i<listaTareasInbox.size(); i++){
 				Object checkboxFinalizada = request.getParameter("marcarFinalizadaInbox"+listaTareasInbox.get(i).getId());
@@ -57,6 +60,7 @@ public class MarcarFinalizadaAction implements Accion {
 				if(checkboxEditar!=null){
 					listaTareasInbox.get(i).setTitle(tituloTareaNueva);
 					listaTareasInbox.get(i).setComments(comentarioTareaNueva);
+					listaTareasInbox.get(i).setCategoryId(Long.parseLong(categoriaTareaNueva));
 					fechaPlaneadaTarea=formatter.parse(request.getParameter("fechaTarea"));
 					listaTareasInbox.get(i).setPlanned(fechaPlaneadaTarea);
 					ts.updateTask(listaTareasInbox.get(i));
@@ -73,6 +77,7 @@ public class MarcarFinalizadaAction implements Accion {
 				if(checkboxEditar!=null){
 					listaTareasHoy.get(i).setTitle(tituloTareaNueva);
 					listaTareasHoy.get(i).setComments(comentarioTareaNueva);
+					listaTareasHoy.get(i).setCategoryId(Long.parseLong(categoriaTareaNueva));
 					fechaPlaneadaTarea=formatter.parse(request.getParameter("fechaTarea"));
 					listaTareasHoy.get(i).setPlanned(fechaPlaneadaTarea);
 					ts.updateTask(listaTareasHoy.get(i));
@@ -80,9 +85,27 @@ public class MarcarFinalizadaAction implements Accion {
 
 			}
 			
+			for(int i = 0; i<listaTareasSemana.size(); i++){
+				Object checkboxFinalizada = request.getParameter("marcarFinalizadaSemana"+listaTareasSemana.get(i).getId());
+				Object checkboxEditar = request.getParameter("editarTareaSemana"+listaTareasSemana.get(i).getId());
+				if(checkboxFinalizada != null){
+					ts.markTaskAsFinished(listaTareasSemana.get(i).getId());
+				}
+				if(checkboxEditar!=null){
+					listaTareasSemana.get(i).setTitle(tituloTareaNueva);
+					listaTareasSemana.get(i).setComments(comentarioTareaNueva);
+					listaTareasSemana.get(i).setCategoryId(Long.parseLong(categoriaTareaNueva));
+					fechaPlaneadaTarea=formatter.parse(request.getParameter("fechaTarea"));
+					listaTareasSemana.get(i).setPlanned(fechaPlaneadaTarea);
+					ts.updateTask(listaTareasSemana.get(i));
+				}
+
+			}
+			
 			
 			request.setAttribute("listaTareasInbox", listaTareasInbox);
 			request.setAttribute("listaTareasHoy", listaTareasHoy);
+			request.setAttribute("listaTareasSemana", listaTareasSemana);
 			new ListarTareasAction().execute(request, response);
 		}
 		catch (BusinessException b) {

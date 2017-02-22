@@ -71,6 +71,38 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br>
+	<br>
+	<center><h1>Lista Tareas Semana</h1></center>
+	<table border="1" align="center">
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Comentario</th>
+				<th>Planeado</th>
+				<th>Categoria</th>
+				<th>Marcar Finalizada</th>
+				<th>Editar tarea</th>
+			</tr>
+		<c:forEach var="entry" items="${listaTareasSemana}" varStatus="i">
+			<tr id="item_${i.index}">
+				<td>${entry.id}</td>
+				<c:choose>
+		            <c:when test="${entry.planned le today}">
+		                <td><FONT COLOR="red"> ${entry.title} </FONT></td> 
+		            </c:when>
+		            <c:otherwise>
+		                <td> ${entry.title} </td> 
+		            </c:otherwise>
+		        </c:choose>
+				<td>${entry.comments}</td>
+				<td> ${entry.planned} </td>
+				<td>${entry.categoryId}</td>
+				<td><input type="checkbox" name="marcarFinalizadaSemana${entry.id}"/></td>
+				<td><input type="checkbox" name="editarTareaSemana${entry.id}"/></td>
+			</tr>
+		</c:forEach>
+	</table>
 	<center><h1>Editar Tarea</h1></center>
 	 	<hr><br>
 	 	<table align="center">
@@ -85,6 +117,10 @@
 	      	<tr> 
 	    		<td align="right">Fecha planeada(formato: dd-MM-yyyy)</td>
 		    	<td><input type="text" name="fechaTarea" align="left" size="15"></td>
+	      	</tr>
+	      	<tr> 
+	    		<td align="right">Editar categoria</td>
+		    	<td><input type="text" name="categoriaTarea" align="left" size="15"></td>
 	      	</tr>
 	      </table>
 	<br>
