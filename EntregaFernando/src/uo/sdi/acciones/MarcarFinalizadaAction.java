@@ -70,6 +70,7 @@ public class MarcarFinalizadaAction implements Accion {
 			
 			for(int i = 0; i<listaTareasHoy.size(); i++){
 				Object checkboxFinalizada = request.getParameter("marcarFinalizadaHoy"+listaTareasHoy.get(i).getId());
+				Log.debug("marcar"+listaTareasHoy.get(i).getId());
 				Object checkboxEditar = request.getParameter("editarTareaHoy"+listaTareasHoy.get(i).getId());
 				if(checkboxFinalizada != null){
 					ts.markTaskAsFinished(listaTareasHoy.get(i).getId());

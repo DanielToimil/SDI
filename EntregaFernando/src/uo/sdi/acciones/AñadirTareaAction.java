@@ -25,6 +25,7 @@ public class AñadirTareaAction implements Accion{
 					TaskService taskService = Services.getTaskService();
 					taskService.createTask(task);
 			}
+			new ListarTareasAction().execute(request, response);
 		}catch(BusinessException b){
 			Log.debug("Error al crear la tarea con nombre [%s]", 
 					nombreTarea);

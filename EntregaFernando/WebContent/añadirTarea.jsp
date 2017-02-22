@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Añadir Tarea</title>
 </head>
 <body>
 	<form action="añadirTarea" method="post" name="registarse_form_name">
