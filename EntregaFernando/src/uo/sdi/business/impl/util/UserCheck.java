@@ -46,4 +46,9 @@ public class UserCheck {
         		.matches();
     }
 
+	public static boolean passwordhasNumber(User user) {
+		String pattern= "(?=.*?[0-9])";
+		return Pattern.compile(pattern).matcher(user.getPassword()).matches();
+	}
+
 }
