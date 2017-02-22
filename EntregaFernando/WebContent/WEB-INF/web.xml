@@ -24,7 +24,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Controlador</servlet-name>
-    <url-pattern>/</url-pattern><!--La / funciona como un comodin-->
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>default</servlet-name>
